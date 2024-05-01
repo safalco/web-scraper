@@ -1,9 +1,12 @@
 import requests
 from bs4 import BeautifulSoup
 
+#have user input the article they want parsed
+article = input("Paste AP News article link: ")
+
 # get the raw html file
-r = requests.get('https://apnews.com/article/catholic-church-shift-orthodoxy-tradition-7638fa2013a593f8cb07483ffc8ed487')
+r = requests.get(article)
 html_doc = r.text
 
 parsed = BeautifulSoup(html_doc, 'html.parser')
-print(parsed.title.string)
+print(parsed.title.text)
